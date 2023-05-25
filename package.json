@@ -1,0 +1,41 @@
+{
+  "name": "scout-discord-bot",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A Discord bot custom-made for 'Programming Made Easy' Discord server",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "build": "rm -rf dist/ && npm run lint && tsc && cp .env dist/",
+    "deploy:commands": "npm run build && ts-node dist/deploy_commands.js",
+    "dev": "NODE_ENV=development nodemon -e ts --exec 'npm run deploy:commands && ts-node src/index.ts'"
+  },
+  "keywords": [
+    "bot",
+    "discord"
+  ],
+  "author": "Mettle X",
+  "license": "SEE LICENSE IN license.md",
+  "devDependencies": {
+    "@types/node": "^20.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.41.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@discordjs/voice": "^0.16.0",
+    "bufferutil": "^4.0.7",
+    "colorette": "^2.0.20",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.0.3",
+    "pino": "^8.14.1",
+    "pino-pretty": "^10.0.0",
+    "utf-8-validate": "^6.0.3"
+  }
+}
