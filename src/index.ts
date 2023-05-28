@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { Client, Events, GatewayIntentBits } from "discord.js";
 
 import logger from "./logger";

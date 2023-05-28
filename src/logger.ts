@@ -1,7 +1,7 @@
 import pino from "pino";
 import { isColorSupported } from "colorette";
 
-const isDevMode = process.env.NODE_ENV === "development";
+const isDevMode = process.env.NODE_ENV !== "production";
 
 const logger = pino(
   isDevMode
