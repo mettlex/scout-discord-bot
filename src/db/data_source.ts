@@ -1,7 +1,7 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 
 export const dataSourceOptions: DataSourceOptions = {
-  type: "better-sqlite3",
+  type: "sqlite",
   database: "db.sqlite",
   entities: [`${__dirname}/**/*.entity.{js,ts}`],
   migrations: [`${__dirname}/migrations/*.{js,ts}`],
