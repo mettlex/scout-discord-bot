@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -21,4 +28,10 @@ export class User extends BaseEntity {
     default: 0,
   })
   walletBalance: number;
+
+  @CreateDateColumn({ nullable: true, default: null })
+  createdAt: Date;
+
+  @UpdateDateColumn({ nullable: true, default: null })
+  updatedAt: Date;
 }
