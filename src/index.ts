@@ -4,6 +4,9 @@ import { Client, Events, GatewayIntentBits } from "discord.js";
 import logger from "./logger";
 import { botToken } from "./constants";
 import commands from "./slash-commands";
+import db from "./db";
+
+db.connect();
 
 logger.info(`${Array.from(commands.keys()).length} slash-commands loaded.`);
 
