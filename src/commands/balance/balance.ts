@@ -6,10 +6,17 @@ import { currency } from "../../constants";
 export default {
   data: new SlashCommandBuilder()
     .setName("balance")
-    .setDescription("Check your wallet balance."),
+    .setDescription("Check your wallet balance.")
+    .addUserOption((option) => {
+      return option
+        .setName("user")
+        .setDescription("Choose the user whose balance you wanna see")
+        .setRequired(false);
+    }),
 
   async execute(interaction: ChatInputCommandInteraction) {
-    const discordId = interaction.user.id;
+    const targetUser = interaction.options.getUser("user");
+    const discordId = targetUser?.id || interaction.user.id;
 
     let user = await User.findOne({
       where: {
@@ -49,9 +56,7 @@ export default {
     }
 
     await interaction.reply(
-      `${
-        interaction.user
-      }'s wallet balance: \`${user.walletBalance.toLocaleString(
+      `<@${discordId}>'s wallet balance: \`${user.walletBalance.toLocaleString(
         "en-IN",
       )}\` ${currencyName}.`,
     );
